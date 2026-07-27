@@ -1,4 +1,5 @@
 import './globals.css';
+import { Suspense } from 'react';
 import Providers from '../components/Providers';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
@@ -15,7 +16,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className="bg-slate-50 text-slate-900 antialiased selection:bg-teal-500 selection:text-white">
         <Providers>
-          <Navbar />
+          <Suspense fallback={<div className="h-16 bg-[#040C2A]" />}>
+            <Navbar />
+          </Suspense>
           <main className="min-h-screen">
             {children}
           </main>

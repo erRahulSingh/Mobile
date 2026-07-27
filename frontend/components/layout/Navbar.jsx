@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, Suspense } from 'react';
 import Link from 'next/link';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import { useSelector } from 'react-redux';
@@ -19,7 +19,7 @@ const mainCategories = [
   { name: 'Kitchen Appliances', icon: '🍳' }
 ];
 
-export default function Navbar() {
+function NavbarContent() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All Categories');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -437,6 +437,14 @@ export default function Navbar() {
         </div>
       )}
     </header>
+  );
+}
+
+export default function Navbar() {
+  return (
+    <Suspense fallback={<div className="h-16 bg-[#040C2A]" />}>
+      <NavbarContent />
+    </Suspense>
   );
 }
 
