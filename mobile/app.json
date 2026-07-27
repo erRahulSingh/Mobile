@@ -1,0 +1,27 @@
+{
+  "expo": {
+    "name": "ElectroMart Mobile",
+    "slug": "electromart-mobile",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#2874F0"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#2874F0"
+      },
+      "package": "com.rahul0113.electromartmobile"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "b372d605-686e-40bb-ad9e-07e0910741e5"
+      }
+    }
+  }
+}
