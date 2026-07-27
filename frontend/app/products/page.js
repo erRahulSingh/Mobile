@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import ProductCard from '../../components/product/ProductCard';
 import { Filter, Grid, List, SlidersHorizontal, Search, RotateCcw, Check, Star, ShieldCheck, Zap, Sparkles } from 'lucide-react';
@@ -303,7 +303,7 @@ const categoriesList = [
 
 const brandsList = ['All', 'Samsung', 'Apple', 'Godrej', 'LG', 'Sony', 'Daikin', 'Voltas', 'Luminous', 'OnePlus', 'HP', 'Bajaj'];
 
-export default function ShopPage() {
+function ShopPageContent() {
   const searchParams = useSearchParams();
   const initialCategory = searchParams.get('category') || 'All';
   const initialSearch = searchParams.get('search') || '';
@@ -543,5 +543,13 @@ export default function ShopPage() {
       </div>
 
     </div>
+  );
+}
+
+export default function ShopPage() {
+  return (
+    <Suspense fallback={<div className="p-12 text-center text-slate-500 font-bold">Loading Store Catalog...</div>}>
+      <ShopPageContent />
+    </Suspense>
   );
 }
